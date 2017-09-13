@@ -1,0 +1,12 @@
+language: c
+compiler: gcc
+install: true
+dist: trusty
+sudo: required
+script:
+  - uname -a
+  - ls /lib/modules/
+  - cd ./HME/scripts
+  - sudo sh install.sh
+  - cd ../Regular_version
+  - make
