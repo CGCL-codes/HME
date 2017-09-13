@@ -34,7 +34,7 @@ You can run 'sudo /scripts/install.sh' in order to automatically install some of
 
 **2.Compiling**
 
-[![Build Status](https://travis-ci.org/RRZE-HPC/likwid.svg?branch=master)](https://travis-ci.org/RRZE-HPC/likwid)
+[![Build Status](https://travis-ci.org/Gumi-presentation-by-Dzh/HME.svg?branch=master)](https://travis-ci.org/Gumi-presentation-by-Dzh/HME.svg?branch=master)
 
 * Compiling and Installation
 
@@ -87,8 +87,6 @@ AHME：PROGRAMMING INTERFACE
 AHME Setup,Compiling,Configuration and How to use
 ------------
 **1.AHME kernel Compiling and install**
-
-[![Build Status](https://travis-ci.org/RRZE-HPC/likwid.svg?branch=master)](https://travis-ci.org/RRZE-HPC/likwid)
 
 * Compiling and Installation
 
