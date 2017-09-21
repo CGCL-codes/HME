@@ -127,13 +127,7 @@ p = nvm_malloc(1024*8);
 ```
 Then you must run this in type 0 (/HME/Regular_version/scripts/nvmini.in)
 
-Happy hacking and hope you find SHMA useful for hybrid memory architecture research.
-
-@Support or Contact
-
-HME is developed in the HUST SCTS&CGCL Lab by ZhuoHui Duan, Haikun Liu and Xiaofei Liao. If you have any questions, please contact ZhuoHui Duan(zhduan@hust.edu.cn), Haikun Liu (hkliu@hust.edu.cn) and Xiaofei Liao (xfliao@hust.edu.cn). We welcome you to commit your modification to support our project.
 
 ## Support or Contact
-This is developed in the [HUST SCTS&CGCL Lab](http://grid.hust.edu.cn/).
+HME is developed in the [HUST SCTS&CGCL Lab](http://grid.hust.edu.cn/) by ZhuoHui Duan, Haikun Liu and Xiaofei Liao.
 If you have any questions, please contact ZhuoHui Duan(zhduan@hust.edu.cn), Haikun Liu (hkliu@hust.edu.cn) and Xiaofei Liao (xfliao@hust.edu.cn).
-We welcome you to commit your modification to support our project.
