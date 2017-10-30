@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#_PREFIX=$(dirname $(pwd))
-_PREFIX="/home/ZHduan/NVM-best_edition/"
+_PREFIX=$(dirname $(pwd))
+#_PREFIX="/home/ZHduan/NVM-best_edition/"
 
 CORE_PMU_MODULE=${_PREFIX}/core.ko
 UNCORE_PMU_MODULE=${_PREFIX}/uncore.ko
