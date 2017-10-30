@@ -132,6 +132,8 @@ Then you must run this in type 0 (/HME/Regular_version/scripts/nvmini.in)
 * We can't monitor the row buffer situation so that we must to ignore that part in our simulation and this is the main reason of the  simulation accuarcy error. So if you want to study on the low level simulation of NVM like MMU or MC and so on, you can check it on this [Website](https://github.com/CGCL-codes/HSCC)  which is our another simulator work about NVMain + Zsim.
 * In order not to change the programmer's programming habits, we implement our memory allocation library on Glibc which based on ptmalloc. So if you want to manage hybrid memory in a more efficiency way, you can implement your memory allocate lib on our kernel API nvm_mmap().
 
+For all of the above problems, we will solve them in the future work. If we can't solve it, we will try to reduce the impact of these defects. If you have good ideas or methods, please contact us. 
+
 ## Support or Contact
 HME is developed in the [HUST SCTS&CGCL Lab](http://grid.hust.edu.cn/) by ZhuoHui Duan, Haikun Liu and Xiaofei Liao.
 If you have any questions, please contact ZhuoHui Duan(zhduan@hust.edu.cn), Haikun Liu (hkliu@hust.edu.cn) and Xiaofei Liao (xfliao@hust.edu.cn).
