@@ -127,6 +127,10 @@ p = nvm_malloc(1024*8);
 ```
 Then you must run this in type 0 (/HME/Regular_version/scripts/nvmini.in)
 
+## Limitation
+* When HME comes to work on Multicore model, there is a problem about NVM write latency simulation. Because the limitation of Hardware PMU and MSR, We can only use the events which Intel provide to us. So, We can't figure out that the LLC eviction caused from which core on local socket. So, simplely we just average the latency which caused by LLC eviction (write back) to the each local core. And also we can build some simple model or profile the APP to let this part simulation be more accuarcy. But in Regular model, it dosen't matter.
+* We can't monitor the row buffer situation so that we must to ignore that part in our simulation and this is the main reason of the  simulation accuarcy error. So if you want to study on the low level simulation of NVM like MMU or MC and so on, you can check it on this [Website](https://github.com/CGCL-codes/HSCC)  which is our another simulator work about NVMain + Zsim.
+* In order not to change the programmer's programming habits, we implement our memory allocation library on Glibc which based on ptmalloc. So if you want to manage hybrid memory in a more efficiency way, you can implement your memory allocate lib on our kernel API nvm_mmap().
 
 ## Support or Contact
 HME is developed in the [HUST SCTS&CGCL Lab](http://grid.hust.edu.cn/) by ZhuoHui Duan, Haikun Liu and Xiaofei Liao.
