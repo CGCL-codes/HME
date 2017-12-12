@@ -1984,6 +1984,11 @@ retry_cpuset:
         page = __alloc_pages_nodemask(gfp, order, node_zonelist(1,gfp), policy_nodemask(gfp,pol));
 		return page;
     }
+    else
+    {
+	page = __alloc_pages_nodemask(gfp, order, node_zonelist(0,gfp), policy_nodemask(gfp,pol));
+	return page;  
+    }
 
     if (pol->mode == MPOL_INTERLEAVE) {
 		unsigned nid;
