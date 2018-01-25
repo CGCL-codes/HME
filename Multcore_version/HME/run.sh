@@ -1,6 +1,6 @@
-export PATH=/home/liurens/pmu-tools:$PATH
+export PATH=/home/luhaodi/pmu-tools:$PATH
 
-numactl --physcpubind=12 insmod /home/liurens/Mult_coreNVM/NVM_emulate_bandwidth/uncore.ko
+#numactl --physcpubind=12 insmod /home/luhaodi/NVMSimulate/Mult_coreNVM/NVM_emulate_bandwidth/uncore.ko
 
 numactl --physcpubind=9 --membind=0 insmod core_NVM.ko
 

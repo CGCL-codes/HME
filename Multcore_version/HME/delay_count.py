@@ -21,7 +21,8 @@ readCount = [0,0,0,0,0,0,0,0,0,0]
 delay = [0,0,0,0,0,0,0,0,0,0]
 eviction=0
 through_count = 0
-
+testw = 0
+testr = 0
 # Count declaration
 WDELAY = 13
 RDELAY = 2
@@ -53,11 +54,13 @@ def get_rw():
 				line_list = re.split('\s+', line_r)
 				core_number = (coreNUM - coreOnLine)
 				if count == 2:
-					writeCount[core_number] = int(line_list[4].replace(',',''))
+					testw=writeCount[core_number] = int(line_list[4].replace(',',''))
+					print "writeCount= %d" %testw		
 					through_count = through_count + writeCount[core_number]
 				else:
-					readCount[core_number] = int(line_list[4].replace(',',''))
-				count = count -1
+					testr=readCount[core_number] = int(line_list[4].replace(',',''))
+					print "readCount= %d" %testr			
+					count = count -1
 				continue
 			elif line_r.endswith('\n') is not True:
 				fp_r_rw.seek((fp_r_rw.tell() - len(line_r)),0)
