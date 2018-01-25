@@ -1982,12 +1982,6 @@ retry_cpuset:
     if (vma->vm_flags&VM_NVM) {
         printk(KERN_INFO "PHYSICAL IN NVM\N");
         page = __alloc_pages_nodemask(gfp, order, node_zonelist(1,gfp), policy_nodemask(gfp,pol));
-		return page;
-    }
-    else
-    {
-	page = __alloc_pages_nodemask(gfp, order, node_zonelist(0,gfp), policy_nodemask(gfp,pol));
-	return page;  
     }
 
     if (pol->mode == MPOL_INTERLEAVE) {
