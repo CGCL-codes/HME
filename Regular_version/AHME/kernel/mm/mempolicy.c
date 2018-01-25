@@ -2001,6 +2001,11 @@ retry_cpuset:
         printk(KERN_INFO "PHYSICAL IN NVM\N");
         return page;
     }
+    else
+    {
+	 page = __alloc_pages_nodemask(gfp, order, node_zonelist(0, gfp), policy_nodemask(gfp, pol));
+	 return page;
+    }
 
 	if (unlikely(pol->mode == MPOL_INTERLEAVE)) {
 		unsigned nid;
