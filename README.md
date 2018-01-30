@@ -87,8 +87,11 @@ sudo sh -c 'echo -1 > / proc / sys / kernel / perf_event_paranoid'
 to modify the perf_event_paranoid file. Need to pay special attention to is: perf_event_paranoid the value of the file will be reset to 2 after the machine is restarted, need to modify the file before normal execution.
 
 /Multcore_version/HME/run.sh is used to start this tool.
+
 /Multcore_version/HME/core_NVM.c  is used to realize the driver core_NVM.ko which is used to receive the performance delta of every core and send these information to every core
+
 /Multcore_version/HME/delay_count.py is used to calculate the performance delta of every core, you can change the delay of NVM in this file
+
 /Multcore_version/HME/NVM_emulate_bandwidth is used to control the nvm bandwith, it same as regular_version we describe above.
 
 How to use: Run the run.sh script in a shell to start the simulator. Create a new shell to run the program you need to test, then the program will run on the simulation environment.
