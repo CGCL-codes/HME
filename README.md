@@ -71,10 +71,22 @@ Using runenv.sh to run your command , it will be put in the HME to emulation the
 
 **3.Mult_core version**
 Make sure your PMU-TOOL is working without error.
+Considering that PMU-TOOL must use ocperf as the base component, we have a multicore version of the simulator as a separate branch, using the linux4.12 kernel that supports ocperf.
+Check the Linux system ./cache/pmu-events/ directory to see if the folder is empty, if it is empty, the pmu-events file is missing. You can get these files from https://download.01.org/ or offline version in ./Multcore_version/ which are: Genuine Intel-6-3F-core.json, GenuineIntel-6-3F-offcore.json, GenuineIntel-6-3F-uncore.json, HaswellX_core_V17.json, HaswellX_matrix_V17.json, HaswellX_uncore_V17.json, mapfile.csv
+Different operating systems may correspond to different files.
+Modify the perf_event_paranoid file to make PMU-TOOL work.
+Execute the 
+```javascript
+sudo sh -c 'echo -1 > / proc / sys / kernel / perf_event_paranoid'
+```
+to modify the perf_event_paranoid file. Need to pay special attention to is: perf_event_paranoid the value of the file will be reset to 2 after the machine is restarted, need to modify the file before normal execution.
+
 /Multcore_version/HME/run.sh is used to start this tool.
 /Multcore_version/HME/core_NVM.c  is used to realize the driver core_NVM.ko which is used to receive the performance delta of every core and send these information to every core
-/Multcore_version/HME/delay_count.py is used to calculate the performance delta of every core
+/Multcore_version/HME/delay_count.py is used to calculate the performance delta of every core, you can change the delay of NVM in this file
 /Multcore_version/HME/NVM_emulate_bandwidth is used to control the nvm bandwith, it same as regular_version we describe above.
+
+How to use: Run the run.sh script in a shell to start the simulator. Create a new shell to run the program you need to test, then the program will run on the simulation environment.
 
 AHME：PROGRAMMING INTERFACE
 ------------
