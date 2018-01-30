@@ -5205,7 +5205,7 @@ malloc_info (int options, FILE *fp)
 
 
 #ifndef MAP_NVM
-#define MAP_NVM         0x80000
+#define MAP_NVM         0x90000
 #endif
 
 
