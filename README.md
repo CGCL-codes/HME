@@ -70,10 +70,15 @@ First, Compiling the emulator's module. From the emulator's source code /Regular
 Using runenv.sh to run your command , it will be put in the HME to emulation the hybrid memory.
 
 **3.Mult_core version**
+
 Make sure your PMU-TOOL is working without error.
+
 Considering that PMU-TOOL must use ocperf as the base component, we have a multicore version of the simulator as a separate branch, using the linux4.12 kernel that supports ocperf.
+
 Check the Linux system ./cache/pmu-events/ directory to see if the folder is empty, if it is empty, the pmu-events file is missing. You can get these files from https://download.01.org/ or offline version in ./Multcore_version/ which are: Genuine Intel-6-3F-core.json, GenuineIntel-6-3F-offcore.json, GenuineIntel-6-3F-uncore.json, HaswellX_core_V17.json, HaswellX_matrix_V17.json, HaswellX_uncore_V17.json, mapfile.csv
+
 Different operating systems may correspond to different files.
+
 Modify the perf_event_paranoid file to make PMU-TOOL work.
 Execute the 
 ```javascript
