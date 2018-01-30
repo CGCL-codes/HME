@@ -16,6 +16,7 @@ ld {
     # variables that must be shared with libc
     __hurd_sigthread_stack_base; __hurd_sigthread_stack_end;
     __hurd_sigthread_variables;
+    __hurd_sigthread_nvm_variables;
     __hurd_threadvar_stack_mask;  __hurd_threadvar_stack_offset;
 
     # functions that must be shared with libc

@@ -45,6 +45,9 @@ typedef void *tsd_key_t;
 # define tsd_setspecific(key, data) ((key) = (data))
 # define tsd_getspecific(key, vptr) (vptr = (key))
 
+# define nvm_tsd_setspecific(key, data) ((key) = (data))
+# define nvm_tsd_getspecific(key, vptr) (vptr = (key))
+
 # define thread_atfork(prepare, parent, child) do {} while(0)
 
 #endif /* !defined mutex_init */

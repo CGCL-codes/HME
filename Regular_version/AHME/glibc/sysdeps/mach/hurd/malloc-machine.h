@@ -62,6 +62,8 @@ __libc_tsd_define (static, void *, MALLOC)	/* declaration/common definition */
 #define tsd_setspecific(key, data)	__libc_tsd_set (void *, MALLOC, (data))
 #define tsd_getspecific(key, vptr)	((vptr) = __libc_tsd_get (void *, MALLOC))
 
+#define nvm_tsd_setspecific(key, data)  __libc_nvm_tsd_set (void *, MALLOC, (data))
+#define nvm_tsd_getspecific(key, vptr)  ((vptr) = __libc_nvm_tsd_get (void *, MALLOC))
 /* madvise is a stub on Hurd, so don't bother calling it.  */
 
 #include <sys/mman.h>

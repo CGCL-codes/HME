@@ -50,6 +50,11 @@ unsigned long int __hurd_sigthread_stack_base;
 unsigned long int __hurd_sigthread_stack_end;
 unsigned long int *__hurd_sigthread_variables;
 
+/* These are prepare for nvm_brk() and set up by _hurdsig_init. */
+
+unsigned long int *__hurd_sigthread_nvm_variables;
+
+
 /* Linked-list of per-thread signal state.  */
 struct hurd_sigstate *_hurd_sigstates;
 
@@ -1268,6 +1273,7 @@ _hurdsig_init (const int *intarray, size_t intarraysize)
       assert_perror (err);
 
       __hurd_sigthread_stack_end = __hurd_sigthread_stack_base + stacksize;
+
       __hurd_sigthread_variables =
 	malloc (__hurd_threadvar_max * sizeof (unsigned long int));
       if (__hurd_sigthread_variables == NULL)
@@ -1276,6 +1282,15 @@ _hurdsig_init (const int *intarray, size_t intarraysize)
 	      __hurd_threadvar_max * sizeof (unsigned long int));
       __hurd_sigthread_variables[_HURD_THREADVAR_LOCALE]
 	= (unsigned long int) &_nl_global_locale;
+
+      __hurd_sigthread_nvm_variables = 
+    nvm_malloc (__hurd_threadvar_max * sizeof (unsigned long int));
+      if (__hurd_sigthread_nvm_variables == NULL)
+    __libc_fatal ("hurd: Can't allocate threadvars for signal thread\n");
+      memset (__hurd_sigthread_nvm_variables, 0,
+            __hurd_threadvar_max * sizeof (unsigned long int));
+      __hurd_sigthread_nvm_variables[_HURD_THREADVAR_LOCALE]
+    = (unsigned long int) &_nl_global_locale;
 
       /* Reinitialize the MiG support routines so they will use a per-thread
 	 variable for the cached reply port.  */

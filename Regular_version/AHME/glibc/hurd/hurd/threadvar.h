@@ -49,6 +49,8 @@ extern unsigned long int __hurd_sigthread_stack_base;
 extern unsigned long int __hurd_sigthread_stack_end;
 extern unsigned long int *__hurd_sigthread_variables;
 
+extern unsigned long int *__hurd_sigthread_nvm_variables;
+
 
 /* At the location described by the two variables above,
    there are __hurd_threadvar_max `unsigned long int's of per-thread data.  */
@@ -93,6 +95,25 @@ __hurd_threadvar_location_from_sp (enum __hurd_threadvar_index __index,
 				    __hurd_threadvar_stack_offset))[__index];
 }
 
+
+extern unsigned long int *__hurd_nvm_threadvar_location_from_sp
+  (enum __hurd_threadvar_index __index, void *__sp);
+  _HURD_THREADVAR_H_EXTERN_INLINE unsigned long int *
+  __hurd_nvm_threadvar_location_from_sp (enum __hurd_threadvar_index __index,
+                           void *__sp)
+{
+      unsigned long int __stack = (unsigned long int) __sp;
+        return &((__stack >= __hurd_sigthread_stack_base &&
+                            __stack < __hurd_sigthread_stack_end)
+                       ? __hurd_sigthread_nvm_variables
+                           : (unsigned long int *) ((__stack & __hurd_threadvar_stack_mask) +
+                                                __hurd_threadvar_stack_offset))[__index];
+}
+
+
+
+
+
 #include <machine-sp.h>		/* Define __thread_stack_pointer.  */
 
 /* Return the location of the current thread's value for the
@@ -111,6 +132,23 @@ __hurd_threadvar_location (enum __hurd_threadvar_index __index)
   return __hurd_threadvar_location_from_sp (__index,
 					    __thread_stack_pointer ());
 }
+
+
+extern unsigned long int *
+__hurd_nvm_threadvar_location (enum __hurd_threadvar_index __index) __THROW
+     /* This declaration tells the compiler that the value is constant
+      *     given the same argument.  We assume this won't be called twice from
+      *         the same stack frame by different threads.  */
+     __attribute__ ((__const__));
+
+     _HURD_THREADVAR_H_EXTERN_INLINE unsigned long int *
+     __hurd_nvm_threadvar_location (enum __hurd_threadvar_index __index)
+{
+      return __hurd_nvm_threadvar_location_from_sp (__index,
+                                    __thread_stack_pointer ());
+}
+}
+
 
 
 #endif	/* hurd/threadvar.h */

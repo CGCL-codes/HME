@@ -79,6 +79,8 @@ static mutex_t list_lock = MUTEX_INITIALIZER;
 static size_t narenas = 1;
 static mstate free_list;
 
+static mstate free_nvm_list;
+
 #if THREAD_STATS
 static int stat_n_heaps;
 # define THREAD_STAT(x) x
@@ -108,10 +110,21 @@ int __malloc_initialized = -1;
       arena_lock (ptr, size);						      \
   } while (0)
 
+#define nvm_arena_get(ptr, size) do { \
+      nvm_arena_lookup (ptr);                             \
+      arena_lock (ptr, size);                             \
+  } while (0)
+
 #define arena_lookup(ptr) do { \
       void *vptr = NULL;						      \
       ptr = (mstate) tsd_getspecific (arena_key, vptr);			      \
   } while (0)
+
+#define nvm_arena_lookup(ptr) do { \
+    void *vptr = NULL; \
+    ptr = (mstate) nvm_tsd_getspecific (arena_key, vptr);               \
+} while (0)
+
 
 #define arena_lock(ptr, size) do {					      \
       if (ptr)								      \

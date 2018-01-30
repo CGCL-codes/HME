@@ -26,9 +26,18 @@
 #define __libc_tsd_address(TYPE, KEY) \
   ((TYPE *) __hurd_threadvar_location (_HURD_THREADVAR_##KEY))
 
+#define __libc_nvm_tsd_address(TYPE, KEY) \
+  ((TYPE *) __hurd_nvm_threadvar_location (_HURD_THREADVAR_##KEY))
+
 #define __libc_tsd_get(TYPE, KEY) \
   (*__libc_tsd_address (TYPE, KEY))
+
+#define __libc_nvm_tsd_get(TYPE, KEY) \
+  (*__libc_tsd_address (TYPE, KEY))
+
 #define __libc_tsd_set(TYPE, KEY, VALUE) \
   (*__libc_tsd_address (TYPE, KEY) = (VALUE))
 
+#define __libc_tsd_set(TYPE, KEY, VALUE) \
+  (*__libc_nvm_tsd_address (TYPE, KEY) = (VALUE))
 #endif	/* bits/libc-tsd.h */

@@ -73,6 +73,9 @@ unsigned long int __hurd_sigthread_stack_base;
 unsigned long int __hurd_sigthread_stack_end;
 unsigned long int *__hurd_sigthread_variables;
 
+unsigned long int *__hurd_sigthread_nvm_variables;
+
+
 /* Defining these variables here avoids the inclusion of init-first.c.
    We need to provide temporary storage for the per-thread variables
    of the main user thread here, since it is used for storing the

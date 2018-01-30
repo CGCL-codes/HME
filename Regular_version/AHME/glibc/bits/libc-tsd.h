@@ -54,7 +54,12 @@
   CLASS __thread TYPE __libc_tsd_##KEY attribute_tls_model_ie;
 
 #define __libc_tsd_address(TYPE, KEY)		(&__libc_tsd_##KEY)
+#define __libc_nvm_tsd_address(TYPE, KEY)   (&__libc_tsd_##KEY)
+
 #define __libc_tsd_get(TYPE, KEY)		(__libc_tsd_##KEY)
+#define __libc_nvm_tsd_get(TYPE, KEY)       (__libc_tsd_##KEY)
+
 #define __libc_tsd_set(TYPE, KEY, VALUE)	(__libc_tsd_##KEY = (VALUE))
+#define __libc_nvm_tsd_set(TYPE, KEY, VALUE)    (__libc_tsd_##KEY = (VALUE))
 
 #endif	/* bits/libc-tsd.h */
