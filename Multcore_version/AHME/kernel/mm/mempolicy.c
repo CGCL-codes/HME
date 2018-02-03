@@ -1979,7 +1979,7 @@ retry_cpuset:
 	pol = get_vma_policy(vma, addr);
 	cpuset_mems_cookie = read_mems_allowed_begin();
 
-    if (vma->vm_flags&VM_NVM) {
+    if (vma->vm_flags && VM_NVM) {
         printk(KERN_INFO "PHYSICAL IN NVM\N");
         page = __alloc_pages_nodemask(gfp, order, node_zonelist(1,gfp), policy_nodemask(gfp,pol));
 	return page;
