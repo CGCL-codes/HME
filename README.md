@@ -145,7 +145,7 @@ Then you must run this in type 0 (/HME/Regular_version/scripts/nvmini.in)
 For all of the above problems, we will solve them in the future work. If we can't solve it, we will try to reduce the impact of these defects. If you have good ideas or methods, please contact us. 
 
 ## Acknowledgements
-A portion of source code in HME is based on a prototype developed by [Mingyu Chen](https://scholar.google.com/citations?user=_hZiQeUAAAAJ&hl=zh-CN) and Dejun Jiang, et al. at Institute of Computing Technology, Chinese Academy of Sciences. In their work, they have emulated the NVM read latency and bandwidth using mechanisms similar to Quartz. We go further and make effort to emulate NVM write latency. We appreciate their previous contribution and valuable advices for this work.
+A portion of source code in HME is based on a prototype developed by [Mingyu Chen](https://scholar.google.com/citations?user=_hZiQeUAAAAJ&hl=zh-CN) and [Dejun Jiang](http://acs.ict.ac.cn/storage/people/jiangdj_zh.html), et al. at Institute of Computing Technology, Chinese Academy of Sciences. In their work, they have emulated the NVM read latency and bandwidth using mechanisms similar to Quartz. We go further and make effort to emulate NVM write latency. We appreciate their previous contribution and valuable advices for this work.
 
 ## Support or Contact
 If you have any questions, please contact ZhuoHui Duan(zhduan@hust.edu.cn), Haikun Liu (hkliu@hust.edu.cn) and Xiaofei Liao (xfliao@hust.edu.cn).
