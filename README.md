@@ -148,5 +148,4 @@ For all of the above problems, we will solve them in the future work. If we can'
 A portion of source code in HME is based on a prototype developed by [Mingyu Chen](https://scholar.google.com/citations?user=_hZiQeUAAAAJ&hl=zh-CN) and Dejun Jiang, et al. at Institute of Computing Technology, Chinese Academy of Sciences. In their work, they have emulated the NVM read latency and bandwidth using mechanisms similar to Quartz. We go further and make effort to emulate NVM write latency. We appreciate their previous contribution and valuable advices for this work.
 
 ## Support or Contact
-HME is developed in the [HUST SCTS&CGCL Lab](http://grid.hust.edu.cn/) by ZhuoHui Duan, Haikun Liu and Xiaofei Liao.
 If you have any questions, please contact ZhuoHui Duan(zhduan@hust.edu.cn), Haikun Liu (hkliu@hust.edu.cn) and Xiaofei Liao (xfliao@hust.edu.cn).
