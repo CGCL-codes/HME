@@ -3,18 +3,11 @@
 &#160; &#160; &#160; &#160; HME is a DRAM-based performance emulator to emulate the performance and energy
 characteristics of upcoming NVM technologies. HME exploits features available in commodity NUMA architectures to emulate two kinds of memories: fast, local DRAM, and slower, remote NVM on other NUMA nodes. HME can emulates a wide range of NVM latencies and bandwidth by injecting different memory access delays on the remote NUMA nodes. To help programmers and researchers in evaluating the impact of NVM on the application performance, we also provide a high-level programming interface to allocate memory from NVM or DRAM pools - AHME. 
 
-![Image of Yaktocat](https://github.com/Gumi-presentation-by-Dzh/HME/blob/master/images/architecture.png)
-
 HME has achieved following functions:
 
  * **Latency Emulation**: As there is no programming interface in commodity hardware to directly control memory access latency, we adopt a software approach to emulate the NVM latency. The basic idea is to inject software-generated additional latencies for the applications in fix-sized time intervals. This strategy can model application-awared total memory access latency to approximate the NVM latency in a period of time. HME uses Home Agent (HA) in Intel Xeon Processor uncore PMU (Performance Monitoring Units) to record the number of memory read accesses (LLC misses) and write accesses to the DRAM on the remote Node, and these memory requests should be issued from applications running on local Node. HME injects additional delays to the cores of the local Node through inter-processor interrupts (IPIs). In such way, HME increases the remote memory access latencies to emulate NVM latency.
 
-![Image of Yaktocat](https://github.com/Gumi-presentation-by-Dzh/HME/blob/master/images/latency.png)
-
-
  * **Bandwidth Emulation**: HME emulate NVM bandwidth by limiting the maximum available DRAM bandwidth. The bandwidth throttling is achieved by leveraging a DRAM thermal control interface provided in commodity Intel Xeon processors.
-
-![Image of Yaktocat](https://github.com/Gumi-presentation-by-Dzh/HME/blob/master/images/bw.png)
 
  * **Energy Emulation**: HME have also established an energy consumption model to compute the NVM’s energy consumption. Due to the lack of the hardware-level feature for counting the energy consumed by the main memory, we choose a statistical approach to model the NVM energy consumption. Unlike the DRAM, NVM does not generate static power consumption, so we only need to count the NVM read and write energy consumption. We count the number of NVM read and write through the PMU and estimate the NVM energy consumption.
 
@@ -100,9 +93,6 @@ AHME：PROGRAMMING INTERFACE
 ------------
 
 &#160; &#160; &#160; &#160; We describe the programming interfaces of HME, named AHME, which can help the programmers to use HME more conveniently. We extend the Glibc library to provide the nvm malloc function so that the application can allocate hybrid memories through malloc or nvm malloc. In order to implement the nvm malloc function, we modify Linux kernel to provide a branch for nvm mmap memory allocation. The branch handles the procedure alloc page in the nvm malloc function. Meanwhile, the NVM pages are differentiated from the DRAM pages in the original VMA (virtual address space). AHME marks the NVM flag in VMA, and calls the specified do nvm page fault function on a page fault to allocate the physical address space in the NUMA remote node. When nvm mmap() from the extended Glibc is called, the kernel calls the do mmap() and do mmap pgoff() functions and flags NVM VMA on the VMA structure when the do mmap pgoff() function applies for the VMA. When a NVM page is accessed at the first time, it generates a page fault and the kernel call handle mm fault() function to handle the page fault. If the NVM VMA flag is matched, the do nvm numa() function is used to allocate a physical page, which is allocated by alloc page() to DRAM on HME remote node (NVM). If the page fault do not refer to a NVM page, the kernel uses normal do page() to allocate DRAM. We implement nvm malloc function in Glibc library by referring to the malloc function, and it calls nvm mmap function through a new syscall. The nvm malloc() calls the nvm mmap() function to pass the mmap parameters to the kernel through MAP NVM parameter provided by AHME kernel. After that, the above NVM allocation is performedby the AHME kernel.
-
-![Image of Yaktocat](https://github.com/Gumi-presentation-by-Dzh/HME/blob/master/images/memoryalloction.png)
-![Image of Yaktocat](https://github.com/Gumi-presentation-by-Dzh/HME/blob/master/images/kernel.png)
 
 AHME Setup,Compiling,Configuration and How to use
 ------------
