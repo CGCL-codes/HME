@@ -1995,10 +1995,10 @@ retry_cpuset:
 	pol = get_vma_policy(current, vma, addr);
 	cpuset_mems_cookie = get_mems_allowed();
 
-    if (vma->vm_flags&VM_NVM)
+    if (vma->vm_flags && VM_NVM)
     {
         page = __alloc_pages_nodemask(gfp, order, node_zonelist(1, gfp), policy_nodemask(gfp, pol));
-        printk(KERN_INFO "PHYSICAL IN NVM\N");
+        //printk(KERN_INFO "PHYSICAL IN NVM\N");
         return page;
     }
     else
