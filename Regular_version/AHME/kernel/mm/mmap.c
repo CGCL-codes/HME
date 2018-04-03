@@ -1250,7 +1250,7 @@ unsigned long do_mmap_pgoff(struct file *file, unsigned long addr,
 	vm_flags = calc_vm_prot_bits(prot) | calc_vm_flag_bits(flags) |
 			mm->def_flags | VM_MAYREAD | VM_MAYWRITE | VM_MAYEXEC;
 
-    if (flags && MAP_NVM)
+    if (flags & MAP_NVM)
         vm_flags |= VM_NVM;
 
     if (flags & MAP_LOCKED)
