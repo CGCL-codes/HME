@@ -192,7 +192,7 @@ extern unsigned int kobjsize(const void *objp);
 #define VM_ARCH_2	0x02000000
 #define VM_DONTDUMP	0x04000000	/* Do not include in the core dump */
 
-#define VM_NVM          0x09000000
+#define VM_NVM          0x08000000
 
 #ifdef CONFIG_MEM_SOFT_DIRTY
 # define VM_SOFTDIRTY	0x08000000	/* Not soft dirty clean area */
