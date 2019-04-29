@@ -3607,48 +3607,6 @@ int numa_migrate_prep(struct page *page, struct vm_area_struct *vma,
 	return mpol_misplaced(page, vma, addr);
 }
 
-/*Using NUMA TO SET THE PAGE TO NVM*/
-int do_nvm_page(struct mm_struct *mm,struct vm_area_struct *vma,
-           unsigned long addr, pte_t pte, pte_t *ptep,pmd_t *pmd)
-{
-    struct page *page = NULL;
-    spinlock_t *ptl;
-    int current_nid = -1;
-    int target_nid = 1;              /*target_nid is node1 which simulate the NVM*/
-    bool migrated = false;
-
-    ptl = pte_lockptr(mm, pmd);
-    spin_lock(ptl);
-
-    if (unlikely(!pte_same(*ptep, pte))){
-        pte_unmap_unlock(ptep, ptl);
-        goto out;
-    }
-
-    pte = pte_mknonnuma(pte);
-    set_pte_at(mm, addr, ptep, pte);
-    update_mmu_cache(vma, addr, ptep);
-
-    page = vm_normal_page(vma, addr, pte);
-    if(!page){
-        pte_unmap_unlock(ptep, ptl);
-        return 0;
-    }
-
-    current_nid = page_to_nid(page);
-    pte_unmap_unlock(ptep, ptl);
-
-    migrated = migrate_misplaced_page(page, target_nid);
-    
-    if(migrated)
-        current_nid = target_nid;
-
-out:
-    if(current_nid != -1)
-        task_numa_fault(current_nid, 1, migrated);
-    return 0;
-}
-
 int do_numa_page(struct mm_struct *mm, struct vm_area_struct *vma,
 		   unsigned long addr, pte_t pte, pte_t *ptep, pmd_t *pmd)
 {
@@ -3824,11 +3782,7 @@ int handle_pte_fault(struct mm_struct *mm,
 	entry = *pte;
 	if (!pte_present(entry)) {
 		if (pte_none(entry)) {
-            /*
-            if (vma->vm_flags & VM_NVM)
-                return do_nvm_page(mm, vma, address, entry, pte, pmd);
-			*/
-            if (vma->vm_ops) {
+			if (vma->vm_ops) {
 				if (likely(vma->vm_ops->fault))
 					return do_linear_fault(mm, vma, address,
 						pte, pmd, flags, entry);
