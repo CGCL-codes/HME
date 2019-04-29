@@ -112,6 +112,9 @@ extern void __list_del_entry(struct list_head *entry);
 extern void list_del(struct list_head *entry);
 #endif
 
+#define list_last_entry(ptr, type, member) \
+	list_entry((ptr)->prev, type, member)
+
 /**
  * list_replace - replace old entry by new one
  * @old : the element to be replaced
