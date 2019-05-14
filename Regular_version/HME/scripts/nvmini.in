@@ -1,7 +1,5 @@
 [Latency]:
-    DRAM_Read_latency_ns = 27
-    DRAM_Write_latency_ns = 57
-    NVM_Read_latency_ns = 39
+    NVM_Read_latency_ns = 139
     NVM_Write_latency_ns = 342
 [Bandwith]:  #Input the ratio of Bandwidth of DRAM / Bandwidth of NVM
     NVM_bw_ratio = 2
