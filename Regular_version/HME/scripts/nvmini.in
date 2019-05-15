@@ -1,5 +1,5 @@
-[Latency]:
-    DRAM_Read_latency_ns = 127       #remote DRAM latency with MLC
+[Latency]:  #Input remote DRAM latency with MLC
+    DRAM_Read_latency_ns = 127
     DRAM_Write_latency_ns = 127
     NVM_Read_latency_ns = 139
     NVM_Write_latency_ns = 342
