@@ -71,10 +71,10 @@ static ssize_t coreNVM_store(struct kobject *kobj, struct kobj_attribute *attr, 
 	//printk(KERN_EMERG "%s", buf);
 	int cpu_id,time;
 	int length = strlen(buf);
-	char *cpu_C=(char *)kmalloc(sizeof(char)*1,GFP_ATOMIC);
+	char *cpu_C=(char *)kmalloc(sizeof(char)*2,GFP_ATOMIC);
 	char *time_C=(char *)kmalloc(sizeof(char)*(length-2),GFP_ATOMIC);
-	strncpy(cpu_C,buf,1);
-	strncpy(time_C,buf+1,length-1);
+	strncpy(cpu_C,buf,2);
+	strncpy(time_C,buf+2,length-2);
 	cpu_id = my_atoi(cpu_C);
 	time = my_atoi(time_C);
 	//printk(KERN_EMERG "cpu_C - %d  time_C - %d",cpu_id,time);
