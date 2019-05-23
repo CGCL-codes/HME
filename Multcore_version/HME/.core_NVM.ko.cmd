@@ -1,1 +1,0 @@
-cmd_/home/luhaodi/NVMSimulate/Mult_coreNVM/core_NVM.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/luhaodi/NVMSimulate/Mult_coreNVM/core_NVM.ko /home/luhaodi/NVMSimulate/Mult_coreNVM/core_NVM.o /home/luhaodi/NVMSimulate/Mult_coreNVM/core_NVM.mod.o ;  true
