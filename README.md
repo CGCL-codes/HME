@@ -31,19 +31,18 @@ You can run 'sudo /scripts/install.sh' in order to automatically install some of
 
 * Compiling and Installation
 
-First, Compiling the emulator's module. From the emulator's source code /Regular_version/HME folder, execute make.
+First, Compiling the emulator's module. From the emulator's source code ./HME folder, execute make.
 
 ```javascript
-[root @node1 HME]# cd Regular_version
-[root @node1 Regular_version]# cd HME
+[root @node1 HME]# cd HME
 [root @node1 HME]# make  //to compiling the HME
 ```
 
-* Update configuration to your HME configuration through /Regular_version/HME/scripts/nvmini.in
+* Update configuration to your HME configuration through ./HME/scripts/nvmini.in
 ```javascript
 [Latency]:
-    DRAM_Read_latency_ns = 100          //DRAM read latency(ns)
-    DRAM_Write_latency_ns = 200         //DRAM write latency(ns)
+    DRAM_Read_latency_ns = 100          //DRAM read latency(ns):input remote DRAM latency with MLC
+    DRAM_Write_latency_ns = 200         //DRAM write latency(ns):input remote DRAM latency with MLC
     NVM_Read_latency_ns = 400           //NVM read latency(ns)
     NVM_Write_latency_ns = 1800         //NVM write latency(ns)
 [Bandwith]: 
@@ -52,11 +51,11 @@ First, Compiling the emulator's module. From the emulator's source code /Regular
     epoch_duration_us = 100             //Simulator polling time
     type = 1                            //when type =0 it means you using the lib AHME; When type=1 it means you using libnuma to put all in nvm; When type=2 it means you using libnuma policy interleave to put it in DRAM and NVM
 [Consumption]:
-    NVM_read_w = 100                    //NVM read consumption
-    NVM_write_w = 2000                  //NVM write consumption
+    NVM_read_w = 100                    //NVM read consumption (Calculate approximate energy consumption by statistics)
+    NVM_write_w = 2000                  //NVM write consumption (Calculate approximate energy consumption by statistics)
 ```
 
-* Use HME through /Regular_version/HME/scripts/runenv.sh
+* Use HME through ./HME/scripts/runenv.sh
 ```javascript
 [root @node1 scripts]# sh runenv.sh runspec --config=Example-linux64-amd64-gcc43.cfg --noreportable --iteration=1 433.milc
 ```
