@@ -99,7 +99,7 @@ AHME Setup,Compiling,Configuration and How to use
 
 * Compiling and Installation
 
-From the emulator's source code /...._version/AHME/kernel,
+From the emulator's source code */AHME/kernel,
 ```javascript
 [root @node1 kernel]# cp config .config                            //To config the configration of linux kernel
 [root @node1 kernel]# sh -c 'yes "" | make oldconfig'               //Use the old kernel configuration and automatically accept the default settings for each new option
@@ -108,7 +108,7 @@ From the emulator's source code /...._version/AHME/kernel,
 [root @node1 kernel]# sudo make -j20 modules_install
 [root @node1 kernel]# sudo make install
 ```
-You can run 'sudo /...._version/AHME/kernel/bulid.sh' in order to automatically install
+You can run 'sudo */AHME/kernel/bulid.sh' in order to automatically install
 
 * Reboot to change to the AHME kernel
 ```javascript
@@ -119,7 +119,7 @@ You can run 'sudo /...._version/AHME/kernel/bulid.sh' in order to automatically 
 
 **2.AHME Glibc Compiling and install**
 * Compiling and Installation
-From the emulator's source code /...._version/AHME/glibc,
+From the emulator's source code */AHME/glibc,
 ```javascript
 [root @node1 AHME]# mkdir glibc-build  
 [root @node1 AHME]# cd glibc-build //to compiling the HME
@@ -134,7 +134,7 @@ You can use this way to alloc nvm memory if you need.
 #include <malloc.h>
 p = nvm_malloc(1024*8);
 ```
-Then you must run this in type 0 (/HME/Regular_version/scripts/nvmini.in)
+Then you must run this in type 0 (./HME/scripts/nvmini.in)
 
 ## Limitation
 * When HME comes to work on Multicore model, there is a problem about NVM write latency simulation. Because the limitation of Hardware PMU and MSR, We can only use the events which Intel provide to us. So, We can't figure out that the LLC eviction caused from which core on local socket. So, simplely we just average the latency which caused by LLC eviction (write back) to the each local core. And also we can build some simple model or profile the APP to let this part simulation be more accuarcy. But in Regular model, it dosen't matter.
