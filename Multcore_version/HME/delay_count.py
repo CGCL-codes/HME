@@ -28,7 +28,7 @@ testr = 0
 # Count declaration
 WDELAY = 1300
 RDELAY = 200
-PRECISION = 10000
+PRECISION = 1000000
 syncount = 0
 
   
