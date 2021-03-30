@@ -145,7 +145,7 @@ For all of the above problems, we will solve them in the future work. If we can'
 
 ## Citing HME
 
-If you use HME, please cite our reearch paper published at DATE 2018.
+If you use HME, please cite our research paper published at DATE 2018.
 
 **Zhuohui Duan, Haikun Liu, Xiaofei Liao, Hai Jin, HME: A Lightweight Emulator for Hybrid Memory, in: Proceedings of the 2018 Design, Automation & Test in Europe Conference & Exhibition (DATE'18), Dresden, Germany, March 19-23, 2018**
 ```javascript
