@@ -143,6 +143,22 @@ Then you must run this in type 0 (./HME/scripts/nvmini.in)
 
 For all of the above problems, we will solve them in the future work. If we can't solve it, we will try to reduce the impact of these defects. If you have good ideas or methods, please contact us. 
 
+## Citing HME
+
+If you use HME, please cite our reearch paper published at DATE 2018.
+
+**Zhuohui Duan, Haikun Liu, Xiaofei Liao, Hai Jin, HME: A Lightweight Emulator for Hybrid Memory, in: Proceedings of the 2018 Design, Automation & Test in Europe Conference & Exhibition (DATE'18), Dresden, Germany, March 19-23, 2018**
+```javascript
+@inproceedings{duan2018hme,
+  title={{HME: A Lightweight Emulator for Hybrid Memory}},
+  author={Duan, Zhuohui and Liu, Haikun and Liao, Xiaofei and Jin, Hai},
+  booktitle={Proceedings of the 2018 Design, Automation \& Test in Europe Conference \& Exhibition (DATE)},
+  pages={1375--1380},
+  year={2018},
+  organization={IEEE}
+}
+```
+
 ## Acknowledgements
 A portion of source code in HME is based on a prototype developed by [Mingyu Chen](https://scholar.google.com/citations?user=_hZiQeUAAAAJ&hl=zh-CN) and [Dejun Jiang](http://acs.ict.ac.cn/storage/people/jiangdj_zh.html), et al. at Institute of Computing Technology, Chinese Academy of Sciences. In their work, they have emulated the NVM read latency and bandwidth using mechanisms similar to Quartz. We go further and make effort to emulate NVM write latency. We appreciate their previous contribution and valuable advices for this work.
 
