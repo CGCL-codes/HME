@@ -13,7 +13,7 @@ HME has achieved following functions:
 
 ## Citing HME
 
-If you use HME, please cite our research paper published at DATE 2018, included as ./HME.pdf.
+If you use HME, please cite our research paper published at DATE 2018, included as ./HME.pdf. [(LINK)](https://ieeexplore.ieee.org/document/8342227)
 
 **Zhuohui Duan, Haikun Liu, Xiaofei Liao, Hai Jin, HME: A Lightweight Emulator for Hybrid Memory, in: Proceedings of the 2018 Design, Automation & Test in Europe Conference & Exhibition (DATE'18), Dresden, Germany, March 19-23, 2018**
 ```javascript
